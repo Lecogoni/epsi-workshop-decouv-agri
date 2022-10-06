@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offer index{% endblock %}
+
+{% block body %}
+  <div class="container"> 
+    <h3>Rejoignez une exploitation</h3>
+
+    <p>paragraphe de description</p>
+
+    <div class="row">
+        {% for offer in offers %}
+
+          <div class="col-md-4">
+            <div class="card" style="height:480px;">
+              <div style="position: absolute; top: 10px; right: 10px;"><span class="badge text-bg-success">Success</span></div>
+              <img src="{{ offer.picture }}" class="card-img-top img-fluid" alt="..."  style="height:260px;">
+              <div class="card-body">
+                  <h5 class="card-title">{{ offer.title }}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text"><small class="text-muted">{{ offer.city }} - {{ offer.department }}</small></p>
+                  <a href="{{ path('app_offer_show', {'id': offer.id}) }}" class="btn btn-success">plus d'info</a>
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}    
+  </div>
+{% endblock %}
+
+
+{# 
+                    <a href="{{ path('app_offer_edit', {'id': offer.id}) }}">edit</a>
+
+                    <a href="{{ path('app_offer_new') }}">Create new</a> #}
