@@ -15,7 +15,7 @@ class AccountController extends AbstractController
         $user = $this->getUser();
         $offers = $user->getOffers();
         return $this->render('account/index.html.twig', [
-            'name' =>   'name',
+            'user' =>   $user,
             'bookings' => $offers
         ]);
     }

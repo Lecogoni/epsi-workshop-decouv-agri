@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -64,20 +65,26 @@ class RegisterType extends AbstractType
                         ]
                 ]
             ])
-            ->add('user_type', TextType::class, [
+
+            ->add('user_type', ChoiceType::class, [
+                'label' => 'votre profession (choississez dans la liste)',
                 'required' => true,
-                'attr' => [
-                    'placeholder' => 'votre profession',
-                    'class' => 'form-control-sm'
-                ]
-             ])
+                'choices' => [
+                        'Apiculteur' => 'apiculteur',
+                        'Ostréiculteur' => 'ostreiculteur',
+                        'Arboriste' => 'arboriste',
+                        'Céréalier' => 'cerealier',
+                        'Éleveur' => 'eleveur',
+                ],
+            ])
 
             ->add('phone', TelType::class, [
                 'required' => true
                 ])
 
             ->add('picture', TextType::class, [
-                'required' => true
+                'required' => true, 
+                'label' => 'ma photo',
                 ])
 
             ->add('submit', SubmitType::class, [

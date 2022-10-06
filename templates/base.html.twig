@@ -14,9 +14,11 @@
     <body>
 
         <header>
-            <nav class="navbar navbar-expand-lg bg-light">
+            <nav class="navbar navbar-expand-lg bg-light" style="margin-bottom: 25px">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ path('app_home') }}">Decouv'Agri</a>
+                <a class="navbar-brand" href="{{ path('app_home') }}">
+                <img src="https://res.cloudinary.com/drv58qoek/image/upload/v1665048061/decouvagri-logo_f3umxa.png" class="img-fluid" alt="" style="height: 42px; width: auto; margin-right: 20px">
+                Decouv'Agri</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -28,32 +30,12 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ path('app_user_index')}}">Membres</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ path('app_register')}}">Inscription</a></li>
-                        <li><a class="dropdown-item" href="{{ path('app_login')}}">Login</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        {# <li><a class="dropdown-item"  href="{{ path('app_user_new') }}">nouveau membre</a></li> #}
-                        
-
-                    </ul>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                    </li>
                 </ul>
+                
                 <form class="d-flex">
                     <div class="btn-group me-2" role="group">
                         {% if app.user %}
-                            <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button id="btnGroupDrop1" type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             bonjour {{ app.user.firstname}}
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -62,7 +44,7 @@
                             <li><a class="dropdown-item" href="{{ path('app_logout')}}">Logout</a></li>
                             </ul>
                         {% else %}
-                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button id="btnGroupDrop1" type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             welcome
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">

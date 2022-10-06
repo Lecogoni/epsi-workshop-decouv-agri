@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}mon compte - eshop{% endblock %}
+{% block title %}mon espace{% endblock %}
 
 {% block body %}
 <style>
@@ -9,35 +9,90 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ app.user.firstname|capitalize }} </h1>
+    <h2>Bonjour {{ app.user.firstname|capitalize }} </h2>
+    <br>
+    
+    <div class="row">
+        <div class="col-6">
+            <h4 style="margin-bottom: 30px; color: green;">Vos infos</h4>
 
-    Bienvenue sur votre espace<br>
-
-    {{name}}
+            <table class="table">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">prénom : </th>
+                                <td  colspan="2">{{ user.firstname }}</td>
+                            </tr>
+                        <tr>
+                            <th scope="row">nom : </th>
+                                <td  colspan="2">{{ user.lastname }}</td>
+                            </tr>
+                        <tr>
+                            <th scope="row">email</th>
+                                <td colspan="2">{{ user.email }}</td>
+                            </tr>
+                        <tr>
+                            <th scope="row">profession</th>
+                                <td colspan="2">{{ user.usertype }}</td>
+                            </tr>
+                        <th scope="row">téléphone</th>
+                            <td colspan="2">{{ user.phone }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6" style="padding: 30px">
+                <br><br>
+                <img src="{{ user.picture }}" class="img-fluid" alt="...">
+            </div>
+        </div>
 
 
     <div class="row">
-      {% for booking in bookings %}
-        <div class="col-md-4">
-        {{booking.title}}
-          <div class="card" style="">
-            <img src="" class="card-img-top img-fluid" alt="" style="height: 240px;">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p></p>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="col-12">
+            <h4 style="margin-bottom: 30px; color: green;">Vos offres</h4>
+            <div class="row">
+            {% for booking in bookings %}
+                <div class="col-6">
+                    <div class="card" style="margin-bottom: 10px">
+                        <div style="position: absolute; top: 10px; right: 10px;"><span class="badge text-bg-warning">{{ booking.activity }}</span></div>
+                        <img src="{{ booking.picture }}" class="card-img-top img-fluid" alt="" style="height: 240px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{booking.title}}</h5>
+                            <p></p>
+                            <a href="#" class="btn btn-success">voir mon offre</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
             </div>
-          </div>
         </div>
-      {% endfor %}
     </div>
 
-    <ul>
+    <div class="row">
+        <div class="col-12">
+            <h4 style="margin-top: 50px; color: green;">Vos séjours</h4>
+            <div class="row">
+            {# {% for booking in bookings %}
+                <div class="col-6">
+                    <div class="card" style="margin-bottom: 10px">
+                        <div style="position: absolute; top: 10px; right: 10px;"><span class="badge text-bg-warning">{{ booking.activity }}</span></div>
+                        <img src="{{ booking.picture }}" class="card-img-top img-fluid" alt="" style="height: 240px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{booking.title}}</h5>
+                            <p></p>
+                            <a href="#" class="btn btn-success">voir mon offre</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %} #}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 
         {# <li><a href="{{ path('app_account_password')}}">modifier mon mot de passe</a></li>
         <li><a href="{{ path('app_account_address')}}">Gérer mes addresses d'expédition</a></li>
         <li>voir mes commandes</li> #}
-    </ul>
-</div>
-{% endblock %}

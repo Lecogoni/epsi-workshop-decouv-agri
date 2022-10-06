@@ -6,16 +6,17 @@
   <div class="container">          
     <h1>Nos membres</h1>
 
+    <p>Découvrez nos profils d’agriculteurs. Ils sont soigneusement vérifiés donc pas de mauvaises surprises possibles.</p>
+    
     <div class="row">
       {% for user in users %}
-        <div class="col-md-4">
+        <div class="col-md-4" style="margin-bottom: 15px;">
           <div class="card" style="">
             <img src="{{user.picture}}" class="card-img-top img-fluid" alt="{{ user.userType }}" style="height: 240px;">
             <div class="card-body">
                 <h5 class="card-title">{{ user.firstname|upper }} {{ user.lastname|upper }}</h5>
-                <p>{{ user.userType|capitalize }}</p>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div style="position: absolute; top:10px; right: 10px"><span class="badge text-bg-warning">{{ user.userType|upper }}</span></div>
+                <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-outline-success btn-sm">a propos</a>
             </div>
           </div>
         </div>
@@ -24,5 +25,5 @@
   </div><!-- /.container -->
 {% endblock %}
 
-{# <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+{# <a href="{{ path('app_user_edit', {'id': user.id}) }}">show</a>
 <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a> #}

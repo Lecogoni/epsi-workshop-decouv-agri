@@ -3,48 +3,42 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ user.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ user.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ user.phone }}</td>
-            </tr>
-            <tr>
-                <th>User_type</th>
-                <td>{{ user.userType }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container" style="margin-top: 20px; margin-bottom: 40px;">
+        <h3  style="margin-bottom: 40px;">À propos de {{ user.firstname|capitalize }}</h3>
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+        <div class="card mb-3" style="width: 100%;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                <img  style="height: auto;" src="{{ user.picture }}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                    <div class="" style="display: flex; justify-content: space-between;">
+                        <div>
+                            <h5 class="card-title">{{ user.firstname|upper }}  {{ user.lastname|upper }}</h5>
+                        </div>
+                        <div>
+                            <h4><span class="badge bg-warning">{{ user.userType }}</span></h4>
+                        </div>
+                    </div>
+
+                    
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">{{ user.email }}</small></p>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <button href="{{ path('app_user_index') }}" type="button" class="btn btn-outline-success">retour à la liste</button>
+
+    </div>
+
+    
+    {# <a >back to list</a>
 
     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
 
-    {{ include('user/_delete_form.html.twig') }}
+    {{ include('user/_delete_form.html.twig') }} #}
 {% endblock %}

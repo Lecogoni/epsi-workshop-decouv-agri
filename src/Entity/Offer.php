@@ -43,6 +43,15 @@ class Offer
     #[ORM\ManyToOne(inversedBy: 'offers')]
     private ?User $farmerId = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $animals = null;
+
+    #[ORM\Column]
+    private ?int $superficie = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $activity = null;
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();
@@ -175,6 +184,42 @@ class Offer
     public function setFarmerId(?User $farmerId): self
     {
         $this->farmerId = $farmerId;
+
+        return $this;
+    }
+
+    public function getAnimals(): ?string
+    {
+        return $this->animals;
+    }
+
+    public function setAnimals(?string $animals): self
+    {
+        $this->animals = $animals;
+
+        return $this;
+    }
+
+    public function getSuperficie(): ?int
+    {
+        return $this->superficie;
+    }
+
+    public function setSuperficie(int $superficie): self
+    {
+        $this->superficie = $superficie;
+
+        return $this;
+    }
+
+    public function getActivity(): ?string
+    {
+        return $this->activity;
+    }
+
+    public function setActivity(string $activity): self
+    {
+        $this->activity = $activity;
 
         return $this;
     }
