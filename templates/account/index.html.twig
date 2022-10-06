@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}mon compte - eshop{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ app.user.firstname|capitalize }} </h1>
+
+    Bienvenue sur votre espace<br>
+
+    {{name}}
+
+
+    <div class="row">
+      {% for booking in bookings %}
+        <div class="col-md-4">
+        {{booking.title}}
+          <div class="card" style="">
+            <img src="" class="card-img-top img-fluid" alt="" style="height: 240px;">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p></p>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <ul>
+
+        {# <li><a href="{{ path('app_account_password')}}">modifier mon mot de passe</a></li>
+        <li><a href="{{ path('app_account_address')}}">Gérer mes addresses d'expédition</a></li>
+        <li>voir mes commandes</li> #}
+    </ul>
+</div>
+{% endblock %}

@@ -3,9 +3,22 @@
 {% block title %}New User{% endblock %}
 
 {% block body %}
-    <h1>Create new User</h1>
+    <div class="container" style="margin-top: 20px;"> 
+        <h3  style="margin-bottom: 20px;">Enregistrer un nouveau membre</h3>
 
-    {{ include('user/_form.html.twig') }}
+        {{ include('user/_form.html.twig') }}
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+        <a href="{{ path('app_user_index') }}">back to list</a>
+
+    </div>
+
+    <div class="container" style="margin-top: 20px;"> 
+            {{ form_start(form)}}
+            {{ form_rest(form)}}
+            <button class="btn btn-primary">{{ button|default('Créer') }}</button>
+            {{ form_end(form)}}
+    </div>
+
+
+
 {% endblock %}

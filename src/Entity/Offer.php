@@ -40,6 +40,9 @@ class Offer
     #[ORM\OneToMany(mappedBy: 'offer', targetEntity: Booking::class)]
     private Collection $bookings;
 
+    #[ORM\ManyToOne(inversedBy: 'offers')]
+    private ?User $farmerId = null;
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();
@@ -160,6 +163,18 @@ class Offer
                 $booking->setOffer(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFarmerId(): ?User
+    {
+        return $this->farmerId;
+    }
+
+    public function setFarmerId(?User $farmerId): self
+    {
+        $this->farmerId = $farmerId;
 
         return $this;
     }

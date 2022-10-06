@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Decouv'Agri{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -26,7 +26,7 @@
                         <a class="nav-link active" aria-current="page" href="{{ path('app_offer_index')}}">Séjours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('app_user_index')}}">Nos membres</a>
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_user_index')}}">Membres</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -36,11 +36,13 @@
                         Dropdown
                     </a>
                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ path('app_register')}}">Inscription</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_login')}}">Login</a></li>
+                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
                         {# <li><a class="dropdown-item"  href="{{ path('app_user_new') }}">nouveau membre</a></li> #}
+                        
 
                     </ul>
                     </li>
@@ -48,10 +50,33 @@
                     <a class="nav-link disabled">Disabled</a>
                     </li>
                 </ul>
-                {# <form class="d-flex" role="search">
+                <form class="d-flex">
+                    <div class="btn-group me-2" role="group">
+                        {% if app.user %}
+                            <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            bonjour {{ app.user.firstname}}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <li><a class="dropdown-item" href="{{ path('app_account')}}">Mon Compte</a></li>
+                            {# <li><a class="dropdown-item" href="{{ path('admin')}}">Admin Dashboard</a></li> #}
+                            <li><a class="dropdown-item" href="{{ path('app_logout')}}">Logout</a></li>
+                            </ul>
+                        {% else %}
+                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            welcome
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <li><a class="dropdown-item" href="{{ path('app_login')}}">Login</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_register')}}">Inscription</a></li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                    {# <div class="me-3">
+                        <a href="{{ path('app_cart') }}"><img src="{{ asset ('images/shopping-cart.png') }}" alt="mon panier" height="38px"></a>
+                    </div>
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> #}
+                    <button class="btn btn-outline-success" type="submit">Search</button> #}
+                </form>
                 </div>
             </div>
             </nav>
@@ -60,7 +85,7 @@
          <main role="main">
 
             {% block body %}{% endblock %}
-            
+
         </main>
 
         {% block javascripts %}
